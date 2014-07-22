@@ -3,7 +3,7 @@
  */
 
 /**
- * Noodles module
+ * Noodles Schema
  */
 
 var mongoose = require('mongoose'),
@@ -40,7 +40,15 @@ var NoodleSchema = new Schema({
 
 NoodleSchema.path('title').validate(function(title){
     return !!title;
-}, 'Title can not be blank')
+}, 'Title can not be blank');
+
+NoodleSchema.path('price').validate(function(price){
+    return price.regex(/^\d+(\.\d{2})?$/);
+},'invalid price');
+
+NoodleSchema.path('category').validate(function(category){
+    return !!category;
+}, 'Category can not be blank');
 
 
 function getPrice(num){
@@ -50,3 +58,7 @@ function getPrice(num){
 function setPrice(num){
     return num*100;
 }
+
+
+mongoose.model('Noodle', NoodleSchema);
+
