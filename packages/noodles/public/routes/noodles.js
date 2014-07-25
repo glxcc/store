@@ -6,5 +6,7 @@ angular.module('mean.noodles').config(['$stateProvider',
             url: '/noodles/example',
             templateUrl: 'noodles/views/index.html'
         });
+
+
     }
 ]);
