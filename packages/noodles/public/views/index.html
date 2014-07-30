@@ -32,14 +32,21 @@
             <a class="navbar-brand" href="#">Noodle Bar</a>
         </div>
         <div class="panel panel-default row">
-            <div class="col-xs-3">
-            </div>
-            <div class="col-xs-8">
-                <!-- noodles -->
-                <div class="well">
+            <div class="col-xs-3" >
 
+            </div>
+            <div class="col-xs-8" >
+                <!-- noodles -->
+                <div class="well" ng-repeat="item in noodles.products">
+                    <h3>
+                        <strong>{{item.title}}</strong>
+                    </h3>
+                    <span class="lead">{{item.description}}</span>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- filter js -->
+<script type="text/javascript" src="/noodles/filters/noodleFilters.js"></script>
