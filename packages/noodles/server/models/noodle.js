@@ -2,6 +2,16 @@
  * Created by xuejiaowang on 22/07/2014.
  */
 
+'use strict';
+
+function getPrice(num){
+    return (num/100).toFixed(2);
+}
+
+function setPrice(num){
+    return num*100;
+}
+
 /**
  * Noodles Schema
  */
@@ -31,7 +41,7 @@ var NoodleSchema = new Schema({
         get:getPrice,
         set:setPrice
     }
-})
+});
 
 
 /**
@@ -49,15 +59,6 @@ NoodleSchema.path('price').validate(function(price){
 NoodleSchema.path('category').validate(function(category){
     return !!category;
 }, 'Category can not be blank');
-
-
-function getPrice(num){
-    return (num/100).toFixed(2);
-}
-
-function setPrice(num){
-    return num*100;
-}
 
 
 mongoose.model('Noodle', NoodleSchema);

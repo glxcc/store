@@ -1,3 +1,17 @@
+<!-- filter js
+<script type="text/javascript" src="noodles/filters/noodleFilters.js"></script>
+-->
+<!--
+<script type="text/javascript">
+    angular.module('mean.noodles',['noodleFilters']);
+</script>
+-->
+<script>
+   console.log('test1')
+   console.log('test2')
+   console.log('test3')
+
+</script>
 <div class="" data-ng-controller="NoodlesController">
     <h1>Example view from your new awesome package</h1>
 
@@ -33,7 +47,11 @@
         </div>
         <div class="panel panel-default row">
             <div class="col-xs-3" >
-
+                <!-- Category  -->
+                <a ng-click="selectedCategory()"
+                   class="btn btn-block btn-default btn-lg">Home</a>
+                <a ng-repeat="item in noodles.products | orderBy:'category'"
+                   ng-click="selectedCategory(item)" class="btn btn-block btn-default btn-lg">{{item.title}}</a>
             </div>
             <div class="col-xs-8" >
                 <!-- noodles -->
@@ -48,5 +66,3 @@
     </div>
 </div>
 
-<!-- filter js -->
-<script type="text/javascript" src="/noodles/filters/noodleFilters.js"></script>

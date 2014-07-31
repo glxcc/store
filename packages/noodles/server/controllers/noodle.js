@@ -2,22 +2,24 @@
  * Created by xuejiaowang on 22/07/2014.
  */
 
+    'use strict';
+
 var mongoose = require('mongoose'),
     Noodle = mongoose.model('Noodle'),
     _ = require('lodash');
 
 /**
- * find noodel
+ * find noodle
  */
 
 exports.noodle = function (req, res, next, id) {
     Noodle.load(id, function (err, noodle) {
-        if (err) return next(err)
+        if (err) return next(err);
         if (!noodle) return next(new Error('Fail to load noodle' + id));
         res.noodle = noodle;
-        next;
+        next();
     });
-}
+};
 
 /**
  *  create noodle
@@ -27,13 +29,13 @@ exports.create = function (req, res) {
     var noodle = new Noodle(req.body);
     noodle.save(function (err) {
         if (err) {
-            return res.json(500, function (err) {
-                error:'can not create noodle'
+            return res.json(500, {
+                error: 'can not create noodle'
             });
         }
         res.json(noodle);
     });
-}
+};
 
 
 /**
@@ -48,12 +50,12 @@ exports.update = function (req, res) {
         if (err) {
             return res.json(500, {
                 error: 'can not update noodle'
-            })
+            });
         }
 
         res.json(noodle);
-    })
-}
+    });
+};
 
 
 /**
@@ -65,9 +67,9 @@ exports.all = function (req, res) {
         if (err) {
             return res.json(500, {
                 error: 'can not load noodles'
-            })
+            });
         }
         res.json(noodles);
-    })
-}
+    });
+};
 

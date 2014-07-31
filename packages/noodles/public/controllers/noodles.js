@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('mean.noodles').controller('NoodlesController', ['$scope',  '$stateParams', '$location','Global', 'Noodles',
+
     function ($scope, $stateParams, $location, Global, Noodle) {
+
         $scope.global = Global;
 
         $scope.noodles = {
@@ -11,7 +13,7 @@ angular.module('mean.noodles').controller('NoodlesController', ['$scope',  '$sta
                 {title: 'noodle 3', description: 'noodle test 3', category: 'cat3', price: 300},
                 {title: 'noodle 4', description: 'noodle test 4', category: 'cat4', price: 400}
             ]
-        }
+        };
 
         /**
          * select product category
@@ -19,14 +21,14 @@ angular.module('mean.noodles').controller('NoodlesController', ['$scope',  '$sta
 
         var selectedCategory = null;
         $scope.selectedCategory = function(newCategory){
+            console.log(newCategory);
             selectedCategory = newCategory;
-        }
+        };
 
         $scope.categoryFilterFn = function(product){
-            return selectedCategory == null || product.category == selectedCategory;
-        }
-
-
+            return selectedCategory === null ||
+                product.category === selectedCategory;
+        };
 
     }
 

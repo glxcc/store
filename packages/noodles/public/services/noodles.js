@@ -7,3 +7,4 @@ angular.module('mean.noodles').factory('Noodles', [
         };
     }
 ]);
+

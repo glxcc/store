@@ -24,6 +24,13 @@ Noodles.register(function(app, auth, database) {
         menu: 'main'
     });
 
+
+    // add filter
+    // Noodles.aggregateAsset('js', 'noodleFilters.js');
+
+    // add dependency
+    // Noodles.angularDependencies('noodleFilters');
+
     /**
     //Uncomment to use. Requires meanio@0.3.7 or above
     // Save settings with callback
@@ -48,3 +55,4 @@ Noodles.register(function(app, auth, database) {
 
     return Noodles;
 });
+
