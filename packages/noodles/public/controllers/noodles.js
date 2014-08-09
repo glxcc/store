@@ -1,17 +1,19 @@
 'use strict';
 
-angular.module('mean.noodles').controller('NoodlesController', ['$scope',  '$stateParams', '$location','Global', 'Noodles',
+angular.module('mean.noodles')
+    .constant('productListActiveClass', 'btn-primary')
+    .controller('NoodlesController', ['$scope',  '$stateParams', '$location','Global', 'Noodles',
 
-    function ($scope, $stateParams, $location, Global, Noodle) {
+    function ($scope, $stateParams, $location, Global, Noodle, productListActiveClass) {
 
         $scope.global = Global;
 
         $scope.noodles = {
             products: [
                 {title: 'noodle 1', description: 'noodle test 1', category: 'cat1', price: 100},
-                {title: 'noodle 2', description: 'noodle test 2', category: 'cat2', price: 200},
-                {title: 'noodle 3', description: 'noodle test 3', category: 'cat3', price: 300},
-                {title: 'noodle 4', description: 'noodle test 4', category: 'cat4', price: 400}
+                {title: 'noodle 2', description: 'noodle test 2', category: 'cat1', price: 200},
+                {title: 'noodle 3', description: 'noodle test 3', category: 'cat2', price: 300},
+                {title: 'noodle 4', description: 'noodle test 4', category: 'cat2', price: 400}
             ]
         };
 
@@ -21,14 +23,25 @@ angular.module('mean.noodles').controller('NoodlesController', ['$scope',  '$sta
 
         var selectedCategory = null;
         $scope.selectedCategory = function(newCategory){
-            console.log(newCategory);
+            // console.log(newCategory);
             selectedCategory = newCategory;
         };
 
         $scope.categoryFilterFn = function(product){
-            return selectedCategory === null ||
-                product.category === selectedCategory;
+            if(selectedCategory === null ||
+                product.category === selectedCategory)
+            return true;
+
+            /*return selectedCategory === null ||
+                products.category === selectedCategory;*/
         };
+
+        $scope.getCategoryClass = function(category){
+            console.log(selectedCategory +" ---> "+category);
+            console.log('productListActiveClass'+productListActiveClass);
+
+            return selectedCategory == category ? productListActiveClass :'';
+        }
 
     }
 

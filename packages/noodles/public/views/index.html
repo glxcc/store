@@ -6,12 +6,7 @@
     angular.module('mean.noodles',['noodleFilters']);
 </script>
 -->
-<script>
-   console.log('test1')
-   console.log('test2')
-   console.log('test3')
 
-</script>
 <div class="" data-ng-controller="NoodlesController">
     <h1>Example view from your new awesome package</h1>
 
@@ -51,14 +46,19 @@
                 <a ng-click="selectedCategory()"
                    class="btn btn-block btn-default btn-lg">Home</a>
                 <a ng-repeat="item in noodles.products | orderBy:'category'"
-                   ng-click="selectedCategory(item)" class="btn btn-block btn-default btn-lg">{{item.title}}</a>
+                   ng-click="selectedCategory(item.category)" class="btn btn-block btn-default btn-lg"
+                        ng-class="getCategoryClass(item.category)">
+                    {{item.title}}
+                </a>
             </div>
             <div class="col-xs-8" >
                 <!-- noodles -->
-                <div class="well" ng-repeat="item in noodles.products">
+                <div class="well" ng-repeat="item in noodles.products | filter: categoryFilterFn">
                     <h3>
                         <strong>{{item.title}}</strong>
                     </h3>
+                    <span class="lead">{{item.price | currency }}</span>
+                    <br>
                     <span class="lead">{{item.description}}</span>
                 </div>
             </div>
